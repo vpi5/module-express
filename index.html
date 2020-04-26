@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script crossorigin="anonymous" integrity="sha384-mlceH9HlqLp7GMKHrj5Ara1+LvdTZVMx4S1U43/NxCvAkzIo8WJ0FE7duLel3wVo" src="https://lib.baomitu.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $.ajax({
+        url : `http://127.0.01:80/api/test?id=0&op=3`,
+        type : 'get',
+        data : {},
+        headers : {},
+        success : function (res) {
+            console.log(res)
+        },
+        error : function (error) {
+            console.log(error)
+        }
+    })
+</script>
