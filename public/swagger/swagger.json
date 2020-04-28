@@ -1,0 +1,116 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "描述内容",
+    "version": "1.0.0",
+    "title": "项目 api 使用手册"
+  },
+  "tags": [
+    {
+      "name": "api",
+      "description": "用户项"
+    }
+  ],
+  "paths": {
+    "/api/user": {
+      "post": {
+        "tags": [
+          "api"
+        ],
+        "summary": "测试post请求",
+        "description": "post 内容版",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "用户名",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/test": {
+      "get": {
+        "tags": [
+          "api"
+        ],
+        "summary": "测试 get 请求",
+        "description": "get 内容",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "用户id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "op",
+            "in": "query",
+            "description": "用户 op 项",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    },
+    "/api/use/test": {
+      "get": {
+        "tags": [
+          "api"
+        ],
+        "summary": "测试 /use/test 请求",
+        "description": "/use/test 内容",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    }
+  }
+}

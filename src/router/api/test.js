@@ -4,6 +4,7 @@ var express = require("express");
 var router = express.Router();
 
 
+
 router.get("/test", async (req, res, next) => {
     let {id, op} = req.query;
     let data = await mySQL.query('SELECT', `SELECT * FROM users WHERE id = 1`, []);

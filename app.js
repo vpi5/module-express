@@ -1,9 +1,12 @@
 var express = require('express');
+
 // TODO 日志记录
 global.logger = require('./src/utils/logs').logger;
 let httpLogger = require('./src/utils/logs').httpLogger;
+
 // TODO 处理 post body 参数  中间件插件
 var bodyParser = require('body-parser');
+
 // TODO 实例化 express 对象
 var app = express();
 
@@ -14,7 +17,7 @@ app.use(express.json());
 
 app.use(express.urlencoded());
 
-//app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended : true}));
 
 // TODO 解决 api 跨域 并 解决 headers 中放置 token 参数
 app.all('*', function(req, res, next) {
@@ -46,7 +49,7 @@ route.forEach((item) => {
 
 // TODO 配置静态资源加载
 // 加载静态资源
-app.use(express.static('static', (req, res) => {  }));
+app.use(express.static('public', (req, res) => {  }));
 
 // ==================== [ API 接口 提供 结束 ] ======================== //
 
@@ -86,6 +89,6 @@ app.use((err, req, res) => {
 });
 
 // TODO 启动服务
-app.listen(process.env.PORT || 80, () => {
+app.listen(process.env.PORT || 8088, () => {
     console.log('Sever 启动成功!');
 });
