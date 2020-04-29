@@ -1,14 +1,24 @@
-var express = require('express');
+import Redis from './src/utils/redis';
+import mySQL from "./src/utils/mysql";
+import config from './config/config';
+import dayjs from 'dayjs';
+let express = require('express');
+
+// TODO 创建 mySQL 连接
+global.mySQL = new mySQL(config['mysql']);
+
+// TODO 创建 redis 连接
+global.redis = new Redis(config['redis']);
 
 // TODO 日志记录
 global.logger = require('./src/utils/logs').logger;
 let httpLogger = require('./src/utils/logs').httpLogger;
 
 // TODO 处理 post body 参数  中间件插件
-var bodyParser = require('body-parser');
+let bodyParser = require('body-parser');
 
 // TODO 实例化 express 对象
-var app = express();
+let app = express();
 
 // TODO 记录 HTTP 请求日志
 app.use(httpLogger);
@@ -90,5 +100,5 @@ app.use((err, req, res) => {
 
 // TODO 启动服务
 app.listen(process.env.PORT || 8088, () => {
-    console.log('Sever 启动成功!');
+    logger.info(`${dayjs().format('YYYY-MM-DD HH:mm:ss')}  Sever 启动成功!`);
 });
