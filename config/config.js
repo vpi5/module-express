@@ -14,6 +14,8 @@ module.exports = {
         database : 'express-demo'
     },
     redis : {
-        name : 3
+        host : '192.168.159.128',
+        port : '6379',
+        password : 'lxx123'
     }
 };

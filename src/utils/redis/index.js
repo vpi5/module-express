@@ -16,13 +16,13 @@ class Redis {
     constructor(config) {
         // 当 redis 配置不存在 那么就不在继续连接
         if(!config) return;
-        client = redis.createClient('6379', '192.168.159.128');
+        client = redis.createClient(config.port, config.host);
 
         client.on('error',function (err) {
             logger.error('redis 创建连接时发生错误：'+ err);
         });
 
-        client.auth('lxx123',function(){
+        client.auth(config.password, function(){
             logger.info('redis验证成功！')
         });
 
