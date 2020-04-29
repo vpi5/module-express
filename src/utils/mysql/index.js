@@ -26,7 +26,7 @@ class mySQL {
                 callback(res)
             }).catch(err => {
                 callback(err);
-                throw Error(`sql数据库操作失败，sql：${sql}`);
+                logger.error(`sql数据库操作失败，sql：${sql}`);
             });
         })
     };
@@ -37,13 +37,13 @@ class mySQL {
             var connection = mysql.createConnection(this.config);
             connection.connect(function(err){
                 if(err){
-                    console.log('数据库链接失败，sql：', sql);
+                    logger.error('数据库链接失败，sql：', sql);
                     throw err;
                 }
                 //开始数据操作
                 connection.query( sql, params, function(err,results,fields ){
                     if(err){
-                        console.log('数据操作失败，sql：', sql);
+                        logger.error('数据操作失败，sql：', sql);
                         throw err;
                     }
                     //将查询出来的数据返回给回调函数，这个时候就没有必要使用错误前置的思想了，因为我们在这个文件中已经对错误进行了处理，如果数据检索报错，直接就会阻塞到这个文件中
@@ -52,7 +52,7 @@ class mySQL {
                     //停止链接数据库，必须再查询语句后，要不然一调用这个方法，就直接停止链接，数据操作就会失败
                     connection.end(function(err){
                         if(err){
-                            console.log('关闭数据库连接失败！');
+                            logger.error('关闭数据库连接失败！');
                             throw err;
                         }
                     });
