@@ -76,4 +76,4 @@ class Redis {
     }
 }
 
-export default Redis;
+module.exports = Redis;

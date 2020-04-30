@@ -1,7 +1,7 @@
-import Redis from './src/utils/redis';
-import mySQL from "./src/utils/mysql";
-import config from './config/config';
-import dayjs from 'dayjs';
+let Redis = require('./src/utils/redis');
+let mySQL = require('./src/utils/mysql');
+let config = require('./config/config');
+let dayjs = require('dayjs');
 let express = require('express');
 
 // TODO 创建 mySQL 连接
@@ -99,6 +99,6 @@ app.use((err, req, res) => {
 });
 
 // TODO 启动服务
-app.listen(process.env.PORT || 8088, () => {
+app.listen(8088, () => {
     logger.info(`${dayjs().format('YYYY-MM-DD HH:mm:ss')}  Sever 启动成功!`);
 });

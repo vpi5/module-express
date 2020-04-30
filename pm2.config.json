@@ -1,13 +1,13 @@
 {
   "apps": {
-    "name": "wx-api",
+    "name": "ex-api",
     "script": "app.js",
     "watch": true,
     "ignore_watch": [
       "node_modules",
       "log"
     ],
-    "instances": 2,
+    "instances": 1,
     "log_date_format": "YYYY-MM-DD HH:mm:ss"
   }
 }

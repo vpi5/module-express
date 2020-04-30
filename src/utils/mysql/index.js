@@ -62,4 +62,4 @@ class mySQL {
     }
 }
 
-export default mySQL;
+module.exports = mySQL;

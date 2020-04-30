@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+let dayjs = require('dayjs');
 var express = require("express");
 var router = express.Router();
 
